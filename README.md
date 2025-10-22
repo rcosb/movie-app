@@ -73,11 +73,6 @@ O projeto atende aos seguintes requisitos técnicos solicitados:
 
 Este projeto foi desenvolvido como um trabalho acadêmico para a disciplina de **FrontEnd Frameworks**.
 
-**Integrantes do Grupo:**
-*   (Liste os nomes dos integrantes aqui)
-
-Contribuições externas não são esperadas para este projeto, mas sugerimos que siga o padrão de código e commit ao trabalhar em forks.
-
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
