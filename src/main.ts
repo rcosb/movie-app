@@ -1,14 +1,19 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
-import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http'; // ✅ Adicionar withInterceptors
+import { IonicRouteStrategy } from '@ionic/angular';
+import { RouteReuseStrategy } from '@angular/router';
 
-import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+
+// Se você criou o interceptor, importe corretamente
+// Se não criou ainda, vamos criar primeiro
 
 bootstrapApplication(AppComponent, {
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideIonicAngular(),
-    provideRouter(routes, withPreloading(PreloadAllModules)),
+    provideRouter(routes),
+    provideHttpClient(), // ✅ Por enquanto, sem interceptor até criarmos ele
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
 });
