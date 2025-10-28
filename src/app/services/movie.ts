@@ -12,7 +12,7 @@ export class MovieService {
   constructor(private http: HttpClient) {}
 
   getPopularMovies(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}`);
+    return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}&page=1`);
   }
 
   getMovieById(id: number): Observable<any> {

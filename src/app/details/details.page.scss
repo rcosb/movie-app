@@ -1,0 +1,75 @@
+// Styles for the details page
+
+ion-content {
+  --background: linear-gradient(135deg, #2d3839 0%, #114d4d 100%);
+  position: relative;
+}
+
+ion-card {
+  --background: rgba(255, 255, 255, 0.9);
+  --border-radius: 15px;
+  margin: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+ion-card img {
+  border-radius: 15px 15px 0 0;
+  width: 30%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+ion-card-header {
+  padding: 16px;
+}
+
+ion-card-title {
+  font-weight: bold;
+  color: #fff;
+  font-size: 24px;
+}
+
+ion-card-subtitle {
+  color: #fff;
+  font-size: 16px;
+}
+
+ion-card-content {
+  padding: 16px;
+}
+
+ion-card-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+ion-list {
+  background: transparent;
+  border: none;
+}
+
+ion-item {
+  --background: rgba(255, 255, 255, 0.8);
+  --border-radius: 10px;
+  margin-bottom: 8px;
+  --inner-padding-end: 16px;
+  --inner-padding-start: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ion-item h3 {
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+ion-item p {
+  color: #fff;
+  margin: 4px 0 0 0;
+}
+
+ion-spinner {
+  color: #fff;
+}
