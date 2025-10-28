@@ -11,36 +11,113 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Barra de pesquisa -->
-  <ion-searchbar
+    <div class="gradient-overlay"></div>
+
+    <ion-searchbar
     [(ngModel)]="searchTerm"
     (ionInput)="searchMovies()"
     placeholder="Buscar filmes..."
   ></ion-searchbar>
 
-  <!-- Lista de filmes -->
-  <ion-list>
-    @for (movie of movies; track movie.id) {
+  <ion-list class="grid-5-cols">
+    @for (movie of row1Movies; track movie.id) {
       <ion-item button (click)="goToDetails(movie.id)">
         <ion-avatar slot="start">
-          <img 
-            [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" 
-            [alt]="movie.title"
-          />
+          <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" [alt]="movie.title" />
         </ion-avatar>
-        
         <ion-label>
           <h2>{{ movie.title }}</h2>
           <p>Data de lançamento: {{ movie.release_date | date:'dd/MM/yyyy' }}</p>
           <p>Avaliação: {{ movie.vote_average }}/10</p>
         </ion-label>
       </ion-item>
-    } @empty {
-      <ion-item>
-        <ion-label class="ion-text-center">
-          Nenhum filme encontrado
+    }
+  </ion-list>
+
+    <ion-list class="grid-5-cols">
+    @for (movie of row2Movies; track movie.id) {
+      <ion-item button (click)="goToDetails(movie.id)">
+        <ion-avatar slot="start">
+          <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" [alt]="movie.title" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ movie.title }}</h2>
+          <p>Data de lançamento: {{ movie.release_date | date:'dd/MM/yyyy' }}</p>
+          <p>Avaliação: {{ movie.vote_average }}/10</p>
         </ion-label>
       </ion-item>
     }
+  </ion-list>
+
+    <ion-list class="grid-4-cols">
+    @for (movie of row3Movies; track movie.id) {
+      <ion-item button (click)="goToDetails(movie.id)">
+        <ion-avatar slot="start">
+          <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" [alt]="movie.title" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ movie.title }}</h2>
+          <p>Data de lançamento: {{ movie.release_date | date:'dd/MM/yyyy' }}</p>
+          <p>Avaliação: {{ movie.vote_average }}/10</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+    <ion-list class="grid-5-cols">
+    @for (movie of row4Movies; track movie.id) {
+      <ion-item button (click)="goToDetails(movie.id)">
+        <ion-avatar slot="start">
+          <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" [alt]="movie.title" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ movie.title }}</h2>
+          <p>Data de lançamento: {{ movie.release_date | date:'dd/MM/yyyy' }}</p>
+          <p>Avaliação: {{ movie.vote_average }}/10</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+    <ion-list class="grid-6-cols">
+    @for (movie of row5Movies; track movie.id) {
+      <ion-item button (click)="goToDetails(movie.id)">
+        <ion-avatar slot="start">
+          <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" [alt]="movie.title" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ movie.title }}</h2>
+          <p>Data de lançamento: {{ movie.release_date | date:'dd/MM/yyyy' }}</p>
+          <p>Avaliação: {{ movie.vote_average }}/10</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+  <ion-list>
+    <div class="grid-3-cols">
+      @for (movie of row6Movies; track movie.id) {
+        <ion-item button (click)="goToDetails(movie.id)">
+          <ion-avatar slot="start">
+            <img
+              [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
+              [alt]="movie.title"
+            />
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{ movie.title }}</h2>
+            <p>Data de lançamento: {{ movie.release_date | date:'dd/MM/yyyy' }}</p>
+            <p>Avaliação: {{ movie.vote_average }}/10</p>
+          </ion-label>
+        </ion-item>
+      } @empty {
+        <ion-item>
+          <ion-label class="ion-text-center">
+            Nenhum filme encontrado
+          </ion-label>
+        </ion-item>
+      }
+    </div>
   </ion-list>
 </ion-content>

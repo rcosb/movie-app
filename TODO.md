@@ -1,0 +1,3 @@
+- [x] Remove unused #container styles from home.page.scss
+- [x] Add styles for ion-content, ion-list, ion-item, ion-searchbar, and .gradient-overlay
+- [x] Test the app to verify styles are applied
