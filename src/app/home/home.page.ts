@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from '../services/movie';
 import { Router } from '@angular/router';
+import { StarsPipe } from '../pipes/stars-pipe'; 
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, StarsPipe],
 })
 export class HomePage implements OnInit {
   // O array original de todos os filmes

@@ -1,75 +1,291 @@
 // Styles for the details page
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Calistoga&display=swap');
 
 ion-content {
-  --background: linear-gradient(135deg, #2d3839 0%, #114d4d 100%);
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
 }
 
-ion-card {
-  --background: rgba(255, 255, 255, 0.9);
-  --border-radius: 15px;
-  margin: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
-ion-card img {
-  border-radius: 15px 15px 0 0;
-  width: 30%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-ion-card-header {
+.movie-details-container {
+  position: relative;
+  z-index: 2;
   padding: 16px;
 }
 
-ion-card-title {
-  font-weight: bold;
-  color: #fff;
+.movie-header {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.poster-container {
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    align-self: center;
+  }
+}
+
+.movie-poster {
+  width: 300px;
+  height: 450px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 375px;
+  }
+}
+
+.movie-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-title {
+  font-family: 'Calistoga', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+}
+
+.movie-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stars-large {
   font-size: 24px;
+  line-height: 1;
 }
 
-ion-card-subtitle {
-  color: #fff;
+.rating-text {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 16px;
+  color: #333;
+  font-weight: 600;
 }
 
-ion-card-content {
-  padding: 16px;
+.overview-section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-ion-card-content p {
+.section-title {
+  font-family: 'Calistoga', serif;
+  font-size: 24px;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.overview-text {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 16px;
-  line-height: 1.5;
-  color: #ccc;
-}
-
-ion-list {
-  background: transparent;
-  border: none;
-}
-
-ion-item {
-  --background: rgba(255, 255, 255, 0.8);
-  --border-radius: 10px;
-  margin-bottom: 8px;
-  --inner-padding-end: 16px;
-  --inner-padding-start: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-ion-item h3 {
-  font-weight: bold;
-  color: #fff;
+  line-height: 1.6;
+  color: #333;
   margin: 0;
 }
 
-ion-item p {
-  color: #fff;
-  margin: 4px 0 0 0;
+.movie-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-ion-spinner {
-  color: #fff;
+.stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.stat-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+}
+
+.stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.genres-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.genres-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.genre-tag {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+// Loading and error states
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: white;
+  text-align: center;
+  
+  ion-spinner {
+    margin-bottom: 16px;
+    --color: white;
+  }
+  
+  p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// Header styling
+ion-toolbar {
+  --background: rgba(255, 255, 255, 0.1);
+  --border-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+ion-title {
+  font-family: 'Calistoga', serif;
+  font-weight: 400;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+ion-back-button {
+  --color: white;
+  --background: rgba(255, 255, 255, 0.2);
+  --border-radius: 50%;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .movie-details-container {
+    padding: 12px;
+  }
+  
+  .movie-header {
+    padding: 16px;
+  }
+  
+  .movie-poster {
+    width: 200px;
+    height: 300px;
+  }
+  
+  .movie-title {
+    font-size: 24px;
+  }
+  
+  .movie-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: 16px;
+  }
 }

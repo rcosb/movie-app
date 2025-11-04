@@ -5,13 +5,14 @@ import { MovieService } from '../services/movie';
 import { ActivatedRoute } from '@angular/router';
 import { CurrencyPipe } from '../pipes/currency-usd-pipe';
 import { HighlightDirective } from '../directives/highlight';
+import { StarsPipe } from '../pipes/stars-pipe'; 
 
 @Component({
   selector: 'app-details',
   templateUrl: 'details.page.html',
   styleUrls: ['details.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, CurrencyPipe, HighlightDirective],
+  imports: [IonicModule, CommonModule, CurrencyPipe, HighlightDirective, StarsPipe],
 })
 export class DetailsPage implements OnInit {
   movie: any = null;

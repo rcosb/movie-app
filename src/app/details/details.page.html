@@ -8,66 +8,89 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  @if (loading) {
-    <div class="ion-text-center ion-padding">
-      <ion-spinner></ion-spinner>
-      <p>Carregando...</p>
-    </div>
-  } @else if (movie) {
-    <ion-card>
-      <img
-        [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
-        [alt]="movie.title"
-      />
-      
-      <ion-card-header>
-        <ion-card-title>{{ movie.title }}</ion-card-title>
-        <ion-card-subtitle>
-          {{ movie.release_date | date:'yyyy' }} • {{ movie.runtime }} minutos
-        </ion-card-subtitle>
-      </ion-card-header>
+  <div class="gradient-overlay"></div>
 
-      <ion-card-content>
-        <p>{{ movie.overview }}</p>
+  <div class="movie-details-container">
+    @if (loading) {
+      <div class="loading-container">
+        <ion-spinner></ion-spinner>
+        <p>Carregando detalhes...</p>
+      </div>
+    } @else if (movie) {
+      <!-- Header com poster e informações principais -->
+      <div class="movie-header">
+        <div class="poster-container">
+          <img 
+            [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" 
+            [alt]="movie.title"
+            class="movie-poster"
+            (error)="movie.poster_path = '/assets/icon/favicon.png'"
+          />
+        </div>
         
-        <ion-list>
-          <ion-item appHighlight>
-            <ion-label>
-              <h3>Avaliação</h3>
-              <p>{{ movie.vote_average }}/10 ({{ movie.vote_count }} votos)</p>
-            </ion-label>
-          </ion-item>
+        <div class="movie-info">
+          <h1 class="movie-title">{{ movie.title }}</h1>
+          <p class="movie-subtitle">
+            {{ movie.release_date | date:'yyyy' }} • {{ movie.runtime }} minutos
+          </p>
+          
+          <div class="rating-section">
+            <div class="stars-large">
+              {{ movie.vote_average | stars }}
+            </div>
+            <div class="rating-text">
+              {{ movie.vote_average | number:'1.1-1' }}/10 ({{ movie.vote_count }} votos)
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <ion-item>
-            <ion-label>
-              <h3>Orçamento</h3>
-              <p>{{ movie.budget | currencyUsd }}</p>
-            </ion-label>
-          </ion-item>
+      <!-- Sinopse -->
+      @if (movie.overview) {
+        <div class="overview-section">
+          <h2 class="section-title">Sinopse</h2>
+          <p class="overview-text">{{ movie.overview }}</p>
+        </div>
+      }
 
-          <ion-item appHighlight="var(--ion-color-success-tint)">
-            <ion-label>
-              <h3>Receita</h3>
-              <p>{{ movie.revenue | currencyUsd }}</p>
-            </ion-label>
-          </ion-item>
+      <!-- Estatísticas do filme -->
+      <div class="movie-stats">
+        <div class="stat-card" appHighlight>
+          <h3 class="section-title">Orçamento</h3>
+          <p class="stat-value">{{ movie.budget | currencyUsd }}</p>
+        </div>
 
-          <ion-item>
-            <ion-label>
-              <h3>Gêneros</h3>
-              <p>
-                @for (genre of movie.genres; track genre.id; let last = $last) {
-                  {{ genre.name }}{{ !last ? ', ' : '' }}
-                }
-              </p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  } @else {
-    <div class="ion-text-center ion-padding">
-      <p>Filme não encontrado</p>
-    </div>
-  }
+        <div class="stat-card" appHighlight="var(--ion-color-success-tint)">
+          <h3 class="section-title">Receita</h3>
+          <p class="stat-value">{{ movie.revenue | currencyUsd }}</p>
+        </div>
+
+        <div class="stat-card">
+          <h3 class="section-title">Duração</h3>
+          <p class="stat-value">{{ movie.runtime }} minutos</p>
+        </div>
+
+        <div class="stat-card">
+          <h3 class="section-title">Data de Lançamento</h3>
+          <p class="stat-value">{{ movie.release_date | date:'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+
+      <!-- Gêneros -->
+      @if (movie.genres && movie.genres.length > 0) {
+        <div class="genres-section">
+          <h2 class="section-title">Gêneros</h2>
+          <div class="genres-container">
+            @for (genre of movie.genres; track genre.id) {
+              <span class="genre-tag">{{ genre.name }}</span>
+            }
+          </div>
+        </div>
+      }
+    } @else {
+      <div class="error-container">
+        <p>Filme não encontrado</p>
+      </div>
+    }
+  </div>
 </ion-content>
